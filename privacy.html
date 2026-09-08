@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index">
+<title>PaintPhase Privacy Policy</title>
+<style>
+:root { color-scheme: light; }
+html { background: #f6f3f0; }
+body {
+  margin: 0; padding: 0 20px 56px;
+  font: 16px/1.6 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #241f2b; background: #f6f3f0;
+}
+main { max-width: 42rem; margin: 0 auto; }
+h1 { font-size: 1.8rem; line-height: 1.2; margin: 40px 0 8px; }
+h2 { font-size: 1.15rem; margin: 32px 0 8px; letter-spacing: .02em; }
+p, li { margin: 0 0 12px; }
+ul { padding-left: 1.25rem; }
+li { margin-bottom: 8px; }
+a { color: #6c59c7; }
+code { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: .95em; }
+strong { color: #1a1520; }
+.meta { color: #6c6376; font-size: .95rem; margin-bottom: 24px; }
+</style>
+</head>
+<body>
+<main>
+<h1>PaintPhase Privacy Policy</h1>
+<p><strong>Effective date: 6 September 2026</strong> (version 1)</p>
+<p>PaintPhase is an Android app for painters, made and published by <strong>Barak Segal</strong>, an individual developer based in Switzerland. This policy explains what the app does with your data. It covers the app with the package name <code>io.github.barakseg.paintphase</code>, as published on Google Play.</p>
+<p>If anything here is unclear, write to <strong>paintphase.support@gmail.com</strong>. A person reads it.</p>
+<h2>The short version</h2>
+<ul>
+<li>Your artwork, photos, notes and analysis stay on your device. No account. No ads. No behavioural tracking.</li>
+<li>The app has no server and no login. Nothing you make is uploaded by the app.</li>
+<li>Two Google services are involved: <strong>Google Play</strong> handles the one purchase, and <strong>Google&rsquo;s ML Kit</strong> does the on-device image analysis and reports technical metrics to Google. Both are described below.</li>
+<li>Apart from those two Google services, your work leaves the phone only when you send it yourself: by sharing an image, by exporting a backup, or by emailing me.</li>
+</ul>
+<h2>What the app stores on your device</h2>
+<p>Everything PaintPhase makes lives in the app&rsquo;s private storage on your phone. It is not written to your photo gallery and not sent to any cloud. That storage holds:</p>
+<ul>
+<li><strong>Projects</strong>, with the name you give each one.</li>
+<li><strong>Reference photos</strong> you choose. The app copies the photo you picked into its private folder and strips the file&rsquo;s metadata, including any location, before use.</li>
+<li><strong>Snaps</strong>, the photos you take of your painting inside the app.</li>
+<li><strong>Alignment data</strong>: the corner positions that lay a reference over a snap.</li>
+<li><strong>Notes and markings</strong>: written notes, freehand ink and highlights you add to a snap.</li>
+<li><strong>Voice notes</strong> you record, saved as audio files.</li>
+<li><strong>Stars, analysis scores, your paint list, and your settings.</strong></li>
+<li><strong>A record of your purchase</strong>, so the app knows the project limit is lifted. Google Play remains the source of truth for it.</li>
+<li><strong>Two diagnostic logs.</strong> A log of recent actions, written only as numbers and predefined categories; it has no field for text, so it cannot hold a project name, a note or a file path. And a log of the app&rsquo;s own errors, capped at about half a megabyte, which records error messages and stack traces; those can contain file paths and, after a failed read of your library, fragments of its text. Both stay on the phone unless you send a bug report, and what a report takes from the error log is redacted first (paths shortened, stored text blanked) and shown to you before you send it; you can also leave it out.</li>
+</ul>
+<p>Android&rsquo;s automatic app backup is switched off for PaintPhase, so the system does not copy this data to your Google account.</p>
+<p><strong>How long it is kept:</strong> until you delete it or uninstall the app. Projects, snaps and voice notes can be deleted individually inside the app. Uninstalling removes everything the app stored on the phone. It does not remove backups you exported, images you shared, emails you sent me, or Google&rsquo;s record of your purchase; those live where you or Google put them.</p>
+<h2>Permissions, and what each one is for</h2>
+<ul>
+<li><strong>Camera.</strong> Shows the live view with the reference laid over it, takes snaps, and switches on the torch. Live frames are processed in memory and discarded. Only the still you snap is saved.</li>
+<li><strong>Microphone.</strong> Used only while you are recording a voice note. The recording is saved on your phone. The app never sends it anywhere.</li>
+<li><strong>Photos.</strong> Reference photos come through Android&rsquo;s photo picker, which hands the app only the photo you choose. PaintPhase has no storage permission and never browses your gallery.</li>
+<li><strong>Internet.</strong> Present for the two Google services described in the next sections. PaintPhase makes no network requests of its own: no analytics, no crash reporting, no advertising, no content downloads.</li>
+</ul>
+<h2>On-device image analysis (Google ML Kit)</h2>
+<p>Some tools use Google&rsquo;s ML Kit library, which runs on your phone:</p>
+<ul>
+<li><strong>Face detection</strong> finds the position of facial features (eyes, nose, mouth, ears, cheeks) in a reference photo and in a snap, so that &ldquo;Subject align&rdquo; can line the reference up with what you painted. It does not recognise or identify anyone, it creates no face template or biometric identifier, and the detected positions are discarded once the alignment is computed. What the app keeps is the resulting alignment: four corner positions. The face detection model ships inside the app.</li>
+<li><strong>Subject segmentation</strong> separates the main subject from the background, for reading a palette off the subject alone and for measuring only the subject in Compare. The mask is computed for that operation. Its model is delivered through Google Play services, downloaded to your phone the first time the feature is used.</li>
+</ul>
+<p>Google states that ML Kit processes input data on the device and does not send the images or the results to Google servers. ML Kit does contact Google for two reasons, in Google&rsquo;s words: &ldquo;The ML Kit APIs may contact Google servers from time to time in order to receive things like bug fixes, updated models and hardware accelerator compatibility information. The ML Kit APIs also send metrics about the performance and utilization of the APIs in your app to Google.&rdquo;</p>
+<p>According to Google&rsquo;s disclosure for ML Kit, those metrics include: device information (manufacturer, model, operating system version and build, available ML hardware accelerators), the app&rsquo;s package name and version, performance measurements such as latency, API configuration such as image format and resolution, input and output sizes, event types and error codes, and identifiers: a per-installation identifier that Google says is not intended to identify a user or a physical device, and, for the feature delivered through Google Play services, a device identifier used for diagnostics. Google encrypts this in transit and states that it does not transfer it to third parties. Google&rsquo;s use of it is governed by <a href="https://policies.google.com/privacy">Google&rsquo;s Privacy Policy</a>.</p>
+<p>I do not receive this data and do not use it. On Google Play&rsquo;s Data safety form, these are the categories called &ldquo;Diagnostics&rdquo; and &ldquo;Device or other IDs&rdquo;. This reporting cannot be switched off inside the app, because it is part of the library the tools are built on.</p>
+<h2>The purchase</h2>
+<p>PaintPhase sells one thing, the &ldquo;Full app&rdquo; purchase, through <strong>Google Play Billing</strong>. Google processes the payment; PaintPhase never receives your card or bank details. The app receives the purchase record it needs to unlock the Full app and to restore it later: an order identifier, the product bought, when, and whether the payment went through. On the phone it keeps only the fact that the purchase was made; &ldquo;Restore purchase&rdquo; asks Google Play again. Google may also show me transaction details in its developer tools, for managing orders and refunds, under Google&rsquo;s own terms. There is no account with me. Google&rsquo;s handling of the payment is governed by <a href="https://play.google.com/about/play-terms/">Google Play&rsquo;s terms</a> and <a href="https://policies.google.com/privacy">Google&rsquo;s Privacy Policy</a>.</p>
+<h2>What you can send me, and what I do with it</h2>
+<p>Three features send something to me, and all three work the same way: the app opens a <strong>draft in your own mail app</strong>, addressed to paintphase.support@gmail.com. You see the entire content before it goes, and nothing is sent until you press send there. You can also copy the content and send it any other way, or not at all.</p>
+<ul>
+<li><strong>Feedback.</strong> Your message, plus your phone model and Android version.</li>
+<li><strong>Snap donation.</strong> Only the snaps you tick: the photo as captured, when it was taken, its alignment corners, and its analysis scores if it has any, plus the app version and your phone model. The reference photo is included only if you switch that on. Project and snap names, notes, voice notes, markings and anything you did not tick are never included. The full donation terms are shown in the app before your first donation and can be read there at any time.</li>
+<li><strong>Bug report.</strong> The app version and build settings, your phone model, Android version and screen size, which screen you were on, how many projects, snaps and notes you have (counts only, never names), whether your library read cleanly, and, unless you switch it off on the report, the redacted error-log excerpt and the list of recent actions described above. A screenshot of the screen is included only if you have turned that on in Settings; it is off by default because a screenshot can show your artwork, and even when on, the picture is shown to you on the report before it is attached.</li>
+</ul>
+<p><strong>How I use it.</strong> I use feedback and bug reports, including screenshots you choose to attach, to investigate problems and improve PaintPhase. I may provide relevant report text, technical diagnostics and attached screenshots to OpenAI's Codex or Anthropic's Claude for AI-assisted debugging and development. I remove identifying information where practical and provide only material needed for the task.</p>
+<p>Donated images may be used to develop, test, evaluate and train PaintPhase features, such as alignment and glare detection or removal. This may include processing through Codex or Claude, as well as work on my own machines. Donation is optional and governed by the terms shown before you send.</p>
+<p>Messages arrive in my Gmail mailbox, hosted by Google. Submitted material is not sold, publicly posted or used for advertising. External providers process it under their applicable terms and privacy policies: <a href="https://openai.com/policies/privacy-policy/">OpenAI</a> and <a href="https://www.anthropic.com/legal/privacy">Anthropic</a>.</p>
+<p><strong>How long I keep it.</strong> Feedback and bug reports are deleted once the issue they describe is closed, and at the latest twelve months after I received them. Donated snaps are kept while I am still testing the app against them; I review the set at least once a year and delete what is no longer needed.</p>
+<p><strong>Having it deleted.</strong> Email me at any time, for example by replying to your own message, and I will delete the submitted material from the copies I control, including my mailbox and local files. Where material has been submitted to an external service, I will use its available deletion controls; the provider may retain some data under its applicable retention policies. Deleting donated photos stops future use of those photos by me. It does not undo changes already made to the app's detection settings or models through earlier testing, tuning or training.</p>
+<h2>Sharing and backups</h2>
+<ul>
+<li><strong>Share.</strong> When you share a snap, a comparison or a timeline reel, the app hands the image to the app you choose through Android&rsquo;s share sheet. From that point on, that app&rsquo;s policy applies.</li>
+<li><strong>Export a backup.</strong> One ordinary zip file containing your projects, snaps, references, names, notes, markings, paint data and voice notes. It is not encrypted, so any app or person you give it to can read it. You choose where it goes.</li>
+<li><strong>Restore from a backup.</strong> The app reads the backup file you pick and merges it into your library on the phone.</li>
+</ul>
+<p>Apart from the Google service communications described above, your pictures, notes and recordings leave the device only when you share, export or send them.</p>
+<h2>What PaintPhase does not do</h2>
+<ul>
+<li>No account and no sign-in.</li>
+<li>No analytics, usage tracking, or crash-reporting service of its own.</li>
+<li>No advertising, and no advertising identifier.</li>
+<li>No location data. Location metadata is stripped from imported photos.</li>
+<li>No access to contacts, calendar, messages, or other apps&rsquo; data.</li>
+<li>No selling, renting or trading of any data, ever.</li>
+</ul>
+<h2>Children</h2>
+<p>PaintPhase is not directed at children under 13, and I do not knowingly collect personal data from children. The app needs no account. If you believe a child has sent me personal information, write to the support address; I will look into it and delete what I hold.</p>
+<h2>Security</h2>
+<p>Your data sits in the app&rsquo;s private storage, protected by Android&rsquo;s app sandbox and by whatever screen lock and encryption your phone uses. Backups you export are unencrypted zip files: treat them as you would your photographs. Email travels through your mail provider and mine.</p>
+<h2>Your rights and choices</h2>
+<p>Because the app keeps your data on your own phone, you already have control over it: your projects and everything in them are yours to view, export and delete inside the app, and clearing the app&rsquo;s storage in Android&rsquo;s settings, or uninstalling it, removes all of its locally stored data, the diagnostic logs and the purchase record included. For anything you have emailed me, you can ask what I hold and have it corrected or deleted by writing to the support address. Whatever data protection law applies to you, the practical route is the same: email me.</p>
+<h2>Changes to this policy</h2>
+<p>When this policy changes, the new version is published at the same address with a new effective date, and material changes are mentioned in the app&rsquo;s release notes.</p>
+<h2>Contact</h2>
+<p>Barak Segal
+paintphase.support@gmail.com</p>
+</main>
+</body>
+</html>
+

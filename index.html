@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FBF6FA">
+  <meta name="description" content="Check your painting against its reference. See proportion, value and colour differences while you work. PaintPhase for Android.">
+  <title>PaintPhase — Check your painting against its reference.</title>
+  <link rel="icon" href="assets/icon.png">
+  <link rel="stylesheet" href="style.css">
+  <script src="site.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="masthead wrap">
+  <a class="brand" href="#" aria-label="PaintPhase home"><img src="assets/icon.png" width="36" height="36" alt="">PaintPhase</a>
+  <nav aria-label="Page sections"><a href="#how-it-works">How it works</a><a href="#tools">Tools</a><a href="#progress">Progress</a></nav><span class="availability">Android · Early access</span>
+</header>
+<main id="main">
+  <section class="hero wrap" aria-labelledby="hero-title">
+    <div class="hero-heading"><span class="eyebrow">A FRESH LOOK AT YOUR PAINTING</span><h1 id="hero-title">Check your painting<br> against its <span>reference.</span></h1><p>See proportion, value and colour<br class="desktop-break"> differences while you work.</p></div>
+    <div class="viewfinder hero-film">
+      <video id="studio-video" autoplay loop muted playsinline preload="metadata" poster="assets/studio-poster.jpg" aria-label="PaintPhase comparing a portrait painting with its reference photograph"><source src="assets/studio-loop-1920.mp4" type="video/mp4"></video>
+    </div>
+    <div class="film-caption"><span class="mono">SNAP. COMPARE. KEEP PAINTING.</span><button id="motion" class="text-button" aria-label="Pause comparison animation">Ⅱ <span>Pause</span></button></div>
+  </section>
+
+  <section id="how-it-works" class="journey wrap section" aria-labelledby="journey-title">
+    <div class="section-top"><span class="eyebrow">AT THE EASEL</span><h2 id="journey-title">Snap. Align. Compare.</h2><p>Photograph your painting, line it up with your reference,<br> and take a closer look. Then get back to painting.</p></div>
+    <p class="swipe-hint mono">SWIPE THROUGH THE SESSION →</p>
+    <div class="sequence" tabindex="0" role="region" aria-label="Snap, Align, Compare — swipe or use arrow keys to explore">
+      <figure><figcaption><span class="step">01</span><h3>Snap</h3><span class="connector" aria-hidden="true">→</span></figcaption><div class="screen"><img src="assets/snap.png" width="1080" height="2244" alt="PaintPhase Studio showing a portrait reference beside the painting" loading="lazy"></div><p>Photograph your painting.</p></figure>
+      <figure><figcaption><span class="step">02</span><h3>Align</h3><span class="connector" aria-hidden="true">→</span></figcaption><div class="screen"><img src="assets/align.png" width="1080" height="2244" alt="Align view with the portrait's reference edges laid over the painting and corner adjustment controls" loading="lazy"></div><p>Drag 4 corners — or tap Find painting.</p></figure>
+      <figure><figcaption><span class="step">03</span><h3>Compare</h3></figcaption><div class="screen"><img src="assets/compare.png" width="1080" height="2244" alt="A close comparison of the painted face and reference, with a movable divider and colour samples" loading="lazy"></div><p>Slide between painting and reference.</p></figure>
+    </div>
+  </section>
+
+  <section id="tools" class="study section wrap" aria-labelledby="study-title"><div class="study-layout">
+    <div class="study-copy"><span class="eyebrow">BEFORE THE FIRST BRUSHSTROKE</span><h2 id="study-title">Find the shapes.<br> See the structure.</h2><p>Study your reference with Edges and Poster.<br> Add a grid to help place your drawing.</p><div class="tabs" role="tablist" aria-label="Reference study tools"><button id="edges-tab" role="tab" aria-selected="true" aria-controls="study-panel" data-study="edges" tabindex="0">Edges</button><button id="poster-tab" role="tab" aria-selected="false" aria-controls="study-panel" data-study="poster" tabindex="-1">Poster</button></div><p id="study-description" class="tool-note">The photo’s lines, with a grid to guide your drawing.</p></div>
+    <div id="study-panel" class="study-panel" role="tabpanel" aria-labelledby="edges-tab"><img id="study-image" src="assets/edges.png" width="1080" height="2244" alt="PaintPhase Edges and grid controls, with violet lines describing the portrait" loading="lazy"></div>
+  </div></section>
+
+  <section class="lenses wrap section" aria-labelledby="lenses-title"><div class="section-top"><span class="eyebrow">A CLOSER LOOK</span><h2 id="lenses-title">See what your eye<br> has stopped noticing.</h2><p>Look beyond the colour. Compare values, warm and cool tones,<br> or the edges that give your painting its shape.</p></div><figure class="lens-frame"><picture><source media="(max-width:600px)" srcset="assets/lenses-mobile.png"><img src="assets/lenses.png" width="2424" height="970" alt="Real PaintPhase comparison: painting and reference in the warm–cool lens, with Value, Warm–cool, Red–green and Edges controls" loading="lazy"></picture></figure><div class="under-image"><span class="mono">PAINTING ↔ REFERENCE</span><p>PaintPhase helps you see. The painting is yours.</p></div></section>
+
+  <section class="mixing wrap section" aria-labelledby="mixing-title">
+    <div class="mixing-copy"><span class="eyebrow">FROM COLOUR TO PAINT</span><h2 id="mixing-title">How to mix it.</h2><p>Find a starting point for your next mix.</p><p>Choose a colour and explore recipes from the paints you own. Adjust an existing mix, or start fresh.</p><p class="mixing-note">Experimental recipes. Try a separate dab, then judge by eye.</p></div>
+    <figure class="mixing-shot"><img src="assets/colour-mixing.png" width="1080" height="2160" alt="PaintPhase How to mix it: a target red, a lighter-and-redder adjustment suggestion, and three paint recipes with parts and WANT / GET colour comparisons" loading="lazy"></figure>
+  </section>
+  <section id="progress" class="progress section wrap" aria-labelledby="progress-title"><div class="section-top"><span class="eyebrow">EVERY PHASE, TOGETHER</span><h2 id="progress-title">Your progress,<br> all in one place.</h2><p>Every snap stays aligned. Play your painting back in Timeline,<br> save a milestone, or leave a note for next time.</p></div><div class="progress-preview"><img id="progress-image" src="assets/progress-5.jpg" width="450" height="295" alt="Portrait painting on 15 September"><p class="mono" id="progress-date" aria-live="polite" aria-atomic="true">15 SEP / LATEST SNAP</p></div><div class="progress-strip" aria-label="Six real stages of the same portrait painting"><figure><img src="assets/progress-0.jpg" alt="First portrait study, broad blocks of colour" loading="lazy"><figcaption>04 SEP</figcaption></figure><figure><img src="assets/progress-1.jpg" alt="Second stage, developing the face" loading="lazy"><figcaption>05 SEP</figcaption></figure><figure><img src="assets/progress-2.jpg" alt="Third stage, refining the features" loading="lazy"><figcaption>06 SEP</figcaption></figure><figure><img src="assets/progress-3.jpg" alt="Fourth stage, adding colour and detail" loading="lazy"><figcaption>13 SEP / 15:03</figcaption></figure><figure><img src="assets/progress-4.jpg" alt="Fifth stage, refining the portrait" loading="lazy"><figcaption>13 SEP / 22:52</figcaption></figure><figure><img src="assets/progress-5.jpg" alt="Most recent portrait painting" loading="lazy"><figcaption>15 SEP</figcaption></figure></div><div class="progress-foot"><span class="mono">ONE PAINTING. EVERY PHASE.</span><p>Choose a snap to look back.</p></div></section>
+
+  <section class="privacy wrap section" aria-labelledby="privacy-title"><span class="eyebrow">PRIVATE BY DESIGN</span><div><h2 id="privacy-title">Your painting. Your device.</h2><p>Your artwork, photos, notes and analysis stay on your device. No account. No ads. No behavioural tracking.</p><a class="quiet-link" href="privacy.html">Read the privacy policy <span aria-hidden="true">↗</span></a></div></section>
+
+  <section class="invitation wrap section" aria-labelledby="invite-title"><span class="eyebrow">AN INVITATION TO PAINTERS</span><h2 id="invite-title">Bring your next painting.</h2><p>PaintPhase is in early access on Android.<br> Try every tool, and help shape what comes next.</p><a class="cta" href="mailto:paintphase.support@gmail.com?subject=PaintPhase%20early%20access&amp;body=Hi%20Barak%2C%0A%0AI%27d%20like%20to%20join%20PaintPhase%20early%20access.%0A">Join the early access <span aria-hidden="true">↗</span></a><span class="invitation-note">Email Barak for an invitation.</span><p class="ownership">At launch: every tool free, six projects included.<br> One purchase removes the project limit. No subscription.</p></section>
+</main>
+<footer class="wrap"><a class="brand" href="#"><img src="assets/icon.png" width="28" height="28" alt="">PaintPhase</a><p>Made by one person. Barak Segal, Switzerland.</p><span class="mono">ANDROID 7.0+</span></footer>
+</body>
+</html>

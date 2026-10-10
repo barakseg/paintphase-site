@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+  <defs>
+    <clipPath id="glass"><path d="M9 3v6L3.5 19Q2.5 21 5 21h14q2.5 0 1.5-2L15 9V3Z"/></clipPath>
+  </defs>
+  <g clip-path="url(#glass)">
+    <path fill="#6c59c7" fill-opacity=".28" d="M2 14.5h20V22H2z"/>
+    <path stroke="#6c59c7" stroke-width="1.6" d="M2 14.5h20"/>
+  </g>
+  <path stroke="#6c59c7" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M9 3v6L3.5 19Q2.5 21 5 21h14q2.5 0 1.5-2L15 9V3M7.5 3h9"/>
+</svg>

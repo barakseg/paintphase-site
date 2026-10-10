@@ -68,29 +68,67 @@ viewer.addEventListener('close', () => {
   imageTrigger?.focus({preventScroll:true});
 });
 
-const milestones = [...document.querySelectorAll('.progress-strip figure')];
-milestones.forEach((figure, index) => {
-  const img = figure.querySelector('img');
-  const date = figure.querySelector('figcaption').textContent;
-  const button = document.createElement('button');
-  button.type = 'button';
-  button.className = 'progress-pick';
-  button.setAttribute('aria-label', `Show painting: ${date}`);
-  button.setAttribute('aria-pressed', String(index === milestones.length - 1));
-  img.replaceWith(button);
-  button.append(img);
-  button.addEventListener('click', () => {
-    document.querySelectorAll('.progress-pick').forEach(item => item.setAttribute('aria-pressed', String(item === button)));
-    document.querySelector('#progress-image').src = img.src;
-    document.querySelector('#progress-image').alt = img.alt;
-    document.querySelector('#progress-date').textContent = date + (index === milestones.length - 1 ? ' / LATEST SNAP' : ' / SAVED SNAP');
-  });
-  button.addEventListener('keydown', event => {
-    if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) return;
-    event.preventDefault();
-    const next = event.key === 'Home' ? 0 : event.key === 'End' ? milestones.length - 1 : (index + (event.key === 'ArrowRight' ? 1 : -1) + milestones.length) % milestones.length;
-    const target = milestones[next].querySelector('button');
-    target.click();
-    target.focus({preventScroll: true});
-  });
+// A website preview using the six saved painting stages, not a screen recording.
+const timelineFrames = [
+  ['04 SEP', '2026-09-04', 'First portrait study, broad blocks of colour'],
+  ['05 SEP', '2026-09-05', 'Second stage, developing the face'],
+  ['06 SEP', '2026-09-06', 'Third stage, refining the features'],
+  ['13 SEP / 15:03', '2026-09-13T15:03', 'Fourth stage, adding colour and detail'],
+  ['13 SEP / 22:52', '2026-09-13T22:52', 'Fifth stage, refining the portrait'],
+  ['15 SEP', '2026-09-15', 'Most recent portrait painting'],
+];
+const timeline = document.querySelector('.timeline-demo');
+const timelineFrame = document.querySelector('#timeline-frame');
+const timelinePosition = document.querySelector('#timeline-position');
+const timelineMotion = document.querySelector('#timeline-motion');
+const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+let timelinePlaying = !reducedMotion.matches;
+let timelineVisible = false;
+let timelineTimer;
+let timelineIndex = 0;
+// Preload the small local frames so playback never flashes an unloaded image.
+for (let index = 0; index < timelineFrames.length; index++) {
+  const frame = new Image();
+  frame.src = 'assets/progress-' + index + '.jpg';
+}
+function showTimelineFrame(index) {
+  timelineIndex = index;
+  const [date, isoDate, description] = timelineFrames[index];
+  timelineFrame.src = 'assets/progress-' + index + '.jpg';
+  timelineFrame.alt = description;
+  document.querySelector('#timeline-count').textContent = 'SNAP ' + (index + 1) + ' OF 6';
+  const dateLabel = document.querySelector('#timeline-date');
+  dateLabel.textContent = date;
+  dateLabel.dateTime = isoDate;
+  timelinePosition.value = index;
+  timelinePosition.setAttribute('aria-valuetext', 'Snap ' + (index + 1) + ' of 6, ' + date);
+  timelinePosition.style.setProperty('--timeline-fill', (index / 5 * 100) + '%');
+}
+function syncTimelinePlayback() {
+  clearInterval(timelineTimer);
+  timelineMotion.innerHTML = timelinePlaying ? 'Ⅱ <span>Pause</span>' : '▷ <span>Play</span>';
+  timelineMotion.setAttribute('aria-label', (timelinePlaying ? 'Pause' : 'Play') + ' painting timeline');
+  if (timelinePlaying && timelineVisible && !document.hidden) {
+    timelineTimer = setInterval(() => showTimelineFrame((timelineIndex + 1) % timelineFrames.length), 1000);
+  }
+}
+timelineMotion.addEventListener('click', () => {
+  timelinePlaying = !timelinePlaying;
+  syncTimelinePlayback();
 });
+timelinePosition.addEventListener('input', () => {
+  timelinePlaying = false;
+  showTimelineFrame(Number(timelinePosition.value));
+  syncTimelinePlayback();
+});
+reducedMotion.addEventListener('change', () => {
+  if (reducedMotion.matches) { timelinePlaying = false; syncTimelinePlayback(); }
+});
+document.addEventListener('visibilitychange', syncTimelinePlayback);
+new IntersectionObserver(entries => {
+  timelineVisible = entries[0].isIntersecting;
+  syncTimelinePlayback();
+}, {threshold: 0.25}).observe(timeline);
+document.querySelector('.timeline-controls').hidden = false;
+showTimelineFrame(0);
+syncTimelinePlayback();

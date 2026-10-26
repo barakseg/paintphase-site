@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#FBF6FA">
   <meta name="description" content="Check your painting against its reference. See proportion, value and colour differences while you work. PaintPhase for Android.">
-  <title>PaintPhase — Check your painting against its reference.</title>
+  <title>PaintPhase — See it. Keep painting.</title>
   <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon-ring-v2.png">
   <link rel="stylesheet" href="style.css">
   <script src="site.js" defer></script>
@@ -18,15 +18,25 @@
 </header>
 <main id="main">
   <section class="hero wrap" aria-labelledby="hero-title">
-    <div class="hero-heading"><span class="eyebrow">A FRESH LOOK AT YOUR PAINTING</span><h1 id="hero-title">Check your painting<br> against its <span>reference.</span></h1><p>See proportion, value and colour<br class="desktop-break"> differences while you work.</p><p class="hero-free mono">FREE FOR 6 PROJECTS · EVERY TOOL INCLUDED</p></div>
+    <div class="hero-heading"><span class="eyebrow">A FRESH LOOK AT YOUR PAINTING</span><h1 id="hero-title">See it.<br><span>Keep painting.</span></h1><p>A fresh pair of eyes, right at your easel. Compare your painting with its reference to spot differences in shape, value and colour.</p><div class="hero-actions"><a class="cta" href="mailto:paintphase.support@gmail.com?subject=PaintPhase%20early%20access&amp;body=Hi%20Barak%2C%0A%0AI%27d%20like%20to%20join%20PaintPhase%20early%20access.%0A">Join early access <span aria-hidden="true">↗</span></a><a class="quiet-link" href="#how-it-works">See how it works ↓</a></div><p class="hero-free mono">FREE FOR 6 PROJECTS · EVERY TOOL INCLUDED</p><span class="hero-platform">Android · No subscription · No account</span></div>
+    <figure class="comparison-demo">
+      <div class="comparison-stage" style="--reveal:50%">
+        <img src="assets/comparison-reference.jpg" width="1080" height="720" alt="Reference photograph for the portrait painting" fetchpriority="high">
+        <img class="comparison-painting" src="assets/comparison-painting.jpg" width="1080" height="720" alt="Barak’s portrait painting, aligned with the reference photograph" fetchpriority="high">
+        <div class="comparison-labels" aria-hidden="true"><span>Painting</span><span>Reference</span></div>
+        <div class="comparison-divider" aria-hidden="true"><span>↔</span></div>
+        <input id="comparison-position" type="range" min="0" max="100" value="50" aria-label="Reveal painting over reference" aria-describedby="comparison-caption" aria-valuetext="50% painting, 50% reference" hidden>
+      </div>
+      <figcaption id="comparison-caption"><span class="comparison-instruction">Painting &amp; reference, side by side.</span><span class="mono">REAL PAINTING. FRESH PERSPECTIVE.</span></figcaption>
+    </figure>
+  </section>
+
+  <section id="how-it-works" class="journey wrap section" aria-labelledby="journey-title">
+    <div class="section-top"><span class="eyebrow">AT THE EASEL</span><h2 id="journey-title">A little perspective.<br>Then back to your brush.</h2><p>Snap your painting. Align it with your reference. See what needs a closer look.</p></div>
     <div class="viewfinder hero-film">
       <video id="studio-video" autoplay loop muted playsinline preload="metadata" poster="assets/studio-poster.jpg" aria-label="PaintPhase comparing a portrait painting with its reference photograph"><source src="assets/studio-loop-1920.mp4" type="video/mp4"></video>
     </div>
     <div class="film-caption"><span class="mono">SNAP. COMPARE. KEEP PAINTING.</span><button id="motion" class="text-button" aria-label="Pause comparison animation">Ⅱ <span>Pause</span></button></div>
-  </section>
-
-  <section id="how-it-works" class="journey wrap section" aria-labelledby="journey-title">
-    <div class="section-top"><span class="eyebrow">AT THE EASEL</span><h2 id="journey-title">Snap. Align. Compare.</h2><p>Photograph your painting, line it up with your reference,<br> and take a closer look. Then get back to painting.</p></div>
     <p class="swipe-hint mono">SWIPE THROUGH THE SESSION →</p>
     <div class="sequence" tabindex="0" role="region" aria-label="Snap, Align, Compare — swipe or use arrow keys to explore">
       <figure><figcaption><span class="step">01</span><h3>Snap</h3><span class="connector" aria-hidden="true">→</span></figcaption><div class="screen"><img src="assets/snap.png" width="1080" height="2244" alt="PaintPhase Studio showing a portrait reference beside the painting" loading="lazy"></div><p>Photograph your painting.</p></figure>
@@ -36,7 +46,7 @@
     <p class="experimental-key">The beaker marks experimental tools. Check the corners suggested by Find painting before comparing.</p>
   </section>
 
-  <section id="tools" class="study section wrap" aria-labelledby="study-title"><div class="study-layout">
+  <section id="tools" class="study section wrap dark-panel" aria-labelledby="study-title"><div class="study-layout">
     <div class="study-copy"><span class="eyebrow">BEFORE THE FIRST BRUSHSTROKE</span><h2 id="study-title">Find the shapes.<br> See the structure.</h2><p>Study your reference with Edges and Poster.<br> Add a grid to help place your drawing.</p><div class="tabs" role="tablist" aria-label="Reference study tools"><button id="edges-tab" role="tab" aria-selected="true" aria-controls="study-panel" data-study="edges" tabindex="0">Edges</button><button id="poster-tab" role="tab" aria-selected="false" aria-controls="study-panel" data-study="poster" tabindex="-1">Poster</button></div><p id="study-description" class="tool-note">The photo’s lines, with a grid to guide your drawing.</p><div class="master-study-note"><h3>Start a master study.</h3><p>Want to practise, or don’t have a reference ready? Choose one of the classic paintings included in PaintPhase. Explore its shapes and values, or use it as the reference for your own study.</p></div></div>
     <div id="study-panel" class="study-panel" role="tabpanel" aria-labelledby="edges-tab"><img id="study-image" src="assets/edges.png" width="1080" height="2244" alt="PaintPhase Edges and grid controls, with violet lines describing the portrait" loading="lazy"></div>
   </div></section>
@@ -47,8 +57,8 @@
     <div class="mixing-copy"><span class="eyebrow">FROM COLOUR TO PAINT</span><h2 id="mixing-title">How to mix it. <img class="experimental-mark" src="assets/experimental-flask.svg" width="24" height="24" alt="(experimental)"></h2><p>Find a starting point for your next mix.</p><p>Choose a colour and explore recipes from the paints you own. Adjust an existing mix, or start fresh.</p><p class="mixing-note">Experimental recipes. Try a separate dab, then judge by eye.</p></div>
     <figure class="mixing-shot"><img src="assets/colour-mixing.png" width="1080" height="2160" alt="PaintPhase How to mix it: a target red, a lighter-and-redder adjustment suggestion, and three paint recipes with parts and WANT / GET colour comparisons" loading="lazy"></figure>
   </section>
-  <section id="progress" class="progress section wrap" aria-labelledby="progress-title">
-    <div class="section-top"><span class="eyebrow">EVERY PHASE, TOGETHER</span><h2 id="progress-title">Your progress,<br> all in one place.</h2><p>Play your painting back in Timeline. Every snap stays aligned, so you can see it grow from the first marks to the finishing touches.</p><p>Move through your saved snaps, revisit starred milestones, and open a snap to take a closer look.</p><span class="mono">ONE PAINTING. EVERY PHASE.</span></div>
+  <section id="progress" class="progress section wrap dark-panel" aria-labelledby="progress-title">
+    <div class="section-top"><span class="eyebrow">EVERY PHASE, TOGETHER</span><h2 id="progress-title">Your progress,<br> all in one place.</h2><p>From the first marks to the finishing touches. Play back your saved snaps in Timeline and see how far you’ve come.</p><p>Move through your saved snaps, revisit starred milestones, and open a snap to take a closer look.</p><span class="mono">ONE PAINTING. EVERY PHASE.</span></div>
     <figure class="timeline-shot">
       <div class="timeline-demo" role="group" aria-label="Painting Timeline preview">
         <div class="timeline-meta"><span id="timeline-count">SNAP 1 OF 6</span><time id="timeline-date" datetime="2026-09-04">04 SEP</time></div>

@@ -132,3 +132,16 @@ new IntersectionObserver(entries => {
 document.querySelector('.timeline-controls').hidden = false;
 showTimelineFrame(0);
 syncTimelinePlayback();
+
+// Reveal the aligned artwork with a native range input: mouse, touch and keyboard.
+const comparisonPosition = document.querySelector('#comparison-position');
+const comparisonStage = document.querySelector('.comparison-stage');
+function updateComparison() {
+  const value = Number(comparisonPosition.value);
+  comparisonStage.style.setProperty('--reveal', value + '%');
+  comparisonPosition.setAttribute('aria-valuetext', value + '% painting, ' + (100 - value) + '% reference');
+}
+comparisonPosition.addEventListener('input', updateComparison);
+comparisonPosition.hidden = false;
+document.querySelector('.comparison-instruction').textContent = 'Drag to compare. Look at the face and hairline.';
+updateComparison();

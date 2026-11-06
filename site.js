@@ -1,17 +1,10 @@
+// The real app clip is visitor-controlled, with native playback/fullscreen controls.
+// Pause when it leaves the page; never restart after an intentional pause.
 const video = document.querySelector('#studio-video');
-const motion = document.querySelector('#motion');
-function syncMotion() {
-  motion.innerHTML = video.paused ? '▷ <span>Play</span>' : 'Ⅱ <span>Pause</span>';
-  motion.setAttribute('aria-label', `${video.paused ? 'Play' : 'Pause'} comparison animation`);
-}
-if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
-  video.autoplay = false;
-  video.pause();
-}
-video.addEventListener('play', syncMotion);
-video.addEventListener('pause', syncMotion);
-motion.addEventListener('click', () => { if (video.paused) video.play().catch(syncMotion); else video.pause(); });
-syncMotion();
+document.addEventListener('visibilitychange', () => { if (document.hidden) video.pause(); });
+new IntersectionObserver(entries => {
+  if (!entries[0].isIntersecting) video.pause();
+}, {threshold: 0}).observe(video);
 const tabs = [...document.querySelectorAll('[data-study]')];
 function selectStudy(tab) {
   const poster = tab.dataset.study === 'poster';
@@ -19,7 +12,7 @@ function selectStudy(tab) {
   document.querySelector('#study-image').src = `assets/${poster ? 'poster' : 'edges'}.png`;
   document.querySelector('#study-image').alt = poster ? 'PaintPhase Poster view simplifying the portrait into flat colour masses, with colour count and palette controls' : 'PaintPhase Edges and grid controls, with violet lines describing the portrait';
   document.querySelector('#study-panel').setAttribute('aria-labelledby', tab.id);
-  document.querySelector('#study-description').textContent = poster ? 'Start with a few flat masses. Add more colours as you work.' : 'The photo’s lines, with a grid to guide your drawing.';
+  document.querySelector('#study-description').textContent = poster ? 'Group the picture into broad masses. In the app, tap a swatch to outline its areas.' : 'Follow the main contours. Use the numbered grid to check where they meet.';
 }
 tabs.forEach((tab, index) => {
   tab.addEventListener('click', () => selectStudy(tab));
@@ -145,3 +138,13 @@ comparisonPosition.addEventListener('input', updateComparison);
 comparisonPosition.hidden = false;
 document.querySelector('.comparison-instruction').textContent = 'Drag to compare. Look at the face and hairline.';
 updateComparison();
+
+// Direct endpoints make the progress example useful without waiting for playback.
+document.querySelectorAll('[data-timeline-jump]').forEach(button => {
+  button.addEventListener('click', () => {
+    timelinePlaying = false;
+    showTimelineFrame(Number(button.dataset.timelineJump));
+    syncTimelinePlayback();
+  });
+});
+document.querySelector('.timeline-jumps').hidden = false;

@@ -53,7 +53,8 @@ h3 { font: 700 20px/1.25 var(--sans); letter-spacing: -.015em; }
 .masthead.stuck .masthead-row { height: 60px; }
 html:not(.js) .masthead { background: var(--paper); }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font: 800 21px/1 var(--sans); letter-spacing: -.03em; }
-.brand img { border-radius: 22%; }
+/* The mark is the portrait cut out over transparency: no tile, no rounding. */
+.brand img { margin-block: -4px; }
 .brand b { color: var(--accent); font-weight: 800; }
 .masthead nav { display: flex; gap: clamp(14px, 2.4vw, 30px); margin-inline: auto; font-size: 14.5px; }
 .masthead nav a { text-decoration: none; color: var(--muted); }

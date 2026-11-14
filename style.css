@@ -51,6 +51,7 @@ h3 { font: 700 20px/1.25 var(--sans); letter-spacing: -.015em; }
 .masthead-row { display: flex; align-items: center; gap: 24px; height: 76px; transition: height .3s; }
 .masthead.stuck { background: color-mix(in srgb, var(--paper) 78%, transparent); backdrop-filter: blur(16px) saturate(1.4); -webkit-backdrop-filter: blur(16px) saturate(1.4); box-shadow: 0 1px 0 var(--line); }
 .masthead.stuck .masthead-row { height: 60px; }
+html:not(.js) .masthead { background: var(--paper); }
 .brand { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; font: 800 21px/1 var(--sans); letter-spacing: -.03em; }
 .brand img { border-radius: 22%; }
 .brand b { color: var(--accent); font-weight: 800; }
@@ -343,6 +344,12 @@ h3 { font: 700 20px/1.25 var(--sans); letter-spacing: -.015em; }
   .stages { grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 4px; }
   .wall { grid-template-columns: repeat(4, 1fr); }
   .play-small small { display: none; }
+}
+/* Below 331 px the masthead's Play door covered the end of the wordmark. */
+@media (max-width: 359px) {
+  .masthead-row { gap: 12px; }
+  .masthead .brand { gap: 8px; font-size: 18px; }
+  .play-small { gap: 8px; padding: 9px 12px 9px 10px; }
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
